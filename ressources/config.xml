@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <applicationname>NumberShooter</applicationname>
+    <windowwidth>800</windowwidth>
+    <windowheight>600</windowheight>
+</configuration>
