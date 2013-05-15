@@ -94,7 +94,6 @@ public class Equation {
      * and store either the result if valid or null othewise
      */
     public void computeResult() {
-        System.out.println("Compute Result");
         int res = -1;
         if (left != null && right != null) {
             switch (operator) {
@@ -161,11 +160,7 @@ public class Equation {
                 break;
         }
 
-        if(right != null){
-            str+= right+" ";
-        }else{
-            str+=" ";
-        }
+        str+=" ? ";
 
         str+=" = ";
 
@@ -183,13 +178,20 @@ public class Equation {
 
     public boolean isValidResponse(int proposition) {
         if (left != null && result != null) {
-             int tmpResult = this.result;
+             Integer tmpResult = this.result;
+             Integer tmpRight = this.right;
+            this.right = proposition;
             computeResult();
-            if(this.result == tmpResult){
+            if(this.result != null && tmpResult != null && this.result.equals(tmpResult)){
+                this.result = tmpResult;
+                this.right = tmpRight;
                 return true;
             }else{
+                this.result = tmpResult;
+                this.right = tmpRight;
                 return false;
             }
+
         }
         return false;
     }

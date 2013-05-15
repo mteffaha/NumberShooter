@@ -1,5 +1,2 @@
-rem set PATH=../../lib/;../../jre/bin/
-rem javac -cp .;../../VocalyzeSIVOX/bin/SI_VOX.jar -Djava.library.path=../ressources/lib/ -d ../bin devintAPI/*.java jeu/*.java
-
-javac -cp .;../../VocalyzeSIVOX/bin/SI_VOX.jar -d ../bin devintAPI/*.java jeu/*.java  
+javac -d ../bin/ -encoding UTF-8 -cp .;../ressources/lib/;../ressources/lib/SI_VOX.jar;../ressources/lib/slick.jar;../ressources/lib/lwjgl.jar;../ressources/lib/jorbis-0.0.15.jar;../ressources/lib/jogg-0.0.7.jar devintAPI/*.java  jeu/*.java org/unice/polytech/si3/devint/teffaha/numbershooter/core/*.java org/unice/polytech/si3/devint/teffaha/numbershooter/equation/*.java org/unice/polytech/si3/devint/teffaha/numbershooter/renderer/*.java org/unice/polytech/si3/devint/teffaha/numbershooter/renderer/elements/*.java org/unice/polytech/si3/devint/teffaha/numbershooter/renderer/input/*.java
 pause

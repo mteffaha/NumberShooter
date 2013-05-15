@@ -133,8 +133,8 @@ public class Jeu extends FenetreAbstraite implements ActionListener{
      	// si c'est le bouton "question" on lit la question
      	// le contenu des questions est variable donc on les lit avec SI_VOX
     	if (source.equals(question)) {
-    		String text = "les questions sont longues et ont un contenu variable.";
-    		text += "Il ne faut pas g�n�rer un fichier wave mais lire directement les textes";
+    		String text = "Bienvenue Dans Number Shooter";
+    		text += "Utilisé les touche directionnelle droite et gauche pour bouger votre vaisseau, et espace pour tirer. le but etant de trouvant le nombre manquant a l'équation. l'équation sera affiché en haut";
     		voix.playText(text);
     	}	
     	// on redonne le focus au JFrame principal 

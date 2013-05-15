@@ -1,21 +1,29 @@
 package org.unice.polytech.si3.devint.teffaha.numbershooter.renderer;
 
+
 import org.newdawn.slick.*;
 import org.unice.polytech.si3.devint.teffaha.numbershooter.core.Config;
+import org.unice.polytech.si3.devint.teffaha.numbershooter.renderer.input.InputManager;
 
 /**
  * @author TEFFAHA Mortadha
  */
 public class MainRenderer extends BasicGame {
+    private RenderState renderState;
+    public static int score = 0;
 
     public MainRenderer()
     {
-        super("Slick2DPath2Glory - SimpleGame");
+        super((String)Config.getParameterByName("applicationtitle"));
+
+
     }
 
     @Override
     public void init(GameContainer gc)
             throws SlickException {
+        RessourceManager.init();
+        renderState =  new LevelState();
 
     }
 
@@ -23,20 +31,40 @@ public class MainRenderer extends BasicGame {
     public void update(GameContainer gc, int delta)
             throws SlickException
     {
+        InputManager.update(gc.getInput());
+
+
+        if(renderState != null){
+            renderState.updateLogic();
+            renderState.updateGraphics();
+
+            this.renderState = renderState.updateState();
+        }
+
+        if(InputManager.isExit()){
+            System.exit(0);
+        }
+
 
     }
 
-    public void render(GameContainer gc, Graphics g)
-            throws SlickException
-    {
-
+    public void render(GameContainer gc, Graphics g) throws SlickException{
+          if(renderState != null){
+              renderState.render(gc,g);
+          }
     }
+
+
+
+
+
+
 
     public static void Start() throws SlickException {
         AppGameContainer app =
                 new AppGameContainer(new MainRenderer());
 
-        app.setDisplayMode((Short)Config.getParameterByName("windowwidth"), (Short)Config.getParameterByName("windowheight"), false);
+        app.setDisplayMode((Short)Config.getParameterByName("windowwidth"), (Short)Config.getParameterByName("windowheight"), (Boolean)Config.getParameterByName("isrendererfullscreen"));
         app.start();
     }
 

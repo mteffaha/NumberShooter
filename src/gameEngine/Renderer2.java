@@ -20,7 +20,7 @@ import org.newdawn.slick.font.effects.ColorEffect;
 
 import t2s.SIVOXDevint;
 
-import Sound.Sound;
+import org.unice.polytech.si3.devint.teffaha.numbershooter.renderer.Sound;
 import calculEngine.EquationBenjamin;
 
 
@@ -98,9 +98,9 @@ public class Renderer2 extends BasicGame {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void init(GameContainer gc) throws SlickException{
-		cannonImg = new Image("../ressources/images/preLaser.png");
-		meteorImage = new Image("../ressources/images/meteor2.png");
-		tirImage = new Image("../ressources/images/projectile.png");
+		cannonImg = new Image("ressources/images/preLaser.png");
+		meteorImage = new Image("ressources/images/meteor2.png");
+		tirImage = new Image("ressources/images/projectile.png");
 
 		widthMetorite= meteorImage.getWidth();
 		heightMetorite = meteorImage.getHeight();
@@ -110,25 +110,25 @@ public class Renderer2 extends BasicGame {
 
 		score = new Score();
 
-		equationFont =  new UnicodeFont("../ressources/fonts/bebas.ttf", TAILLE_POLICE_EQUATION, false, false);
+		equationFont =  new UnicodeFont("ressources/fonts/bebas.ttf", TAILLE_POLICE_EQUATION, false, false);
 
 		equationFont.addAsciiGlyphs();
 		equationFont.getEffects().add(new ColorEffect(java.awt.Color.BLACK));
 		equationFont.loadGlyphs();
 
-		scoreFont =  new UnicodeFont("../ressources/fonts/bebas.ttf", 100, false, false);
+		scoreFont =  new UnicodeFont("ressources/fonts/bebas.ttf", 100, false, false);
 
 		scoreFont.addAsciiGlyphs();
 		scoreFont.getEffects().add(new ColorEffect(java.awt.Color.red));
 		scoreFont.loadGlyphs();
 
-		meteorFont =  new UnicodeFont("../ressources/fonts/bignoodle.ttf", 110, false, false);
+		meteorFont =  new UnicodeFont("ressources/fonts/bignoodle.ttf", 110, false, false);
 
 		meteorFont.addAsciiGlyphs();
 		meteorFont.getEffects().add(new ColorEffect(java.awt.Color.white));
 		meteorFont.loadGlyphs();
 
-		endFont =  new UnicodeFont("../ressources/fonts/bebas.ttf", TAILLE_POLICE_EQUATION, false, false);
+		endFont =  new UnicodeFont("ressources/fonts/bebas.ttf", TAILLE_POLICE_EQUATION, false, false);
 		endFont.addAsciiGlyphs();
 		endFont.getEffects().add(new ColorEffect(java.awt.Color.WHITE));
 		endFont.loadGlyphs();
@@ -245,7 +245,7 @@ public class Renderer2 extends BasicGame {
 					}
 				}
 
-				// Read Input
+				// Read input
 				Input input = gc.getInput();
 
 				if(input.isKeyDown(Input.KEY_RIGHT)){

@@ -2,6 +2,8 @@ package org.unice.polytech.si3.devint.teffaha.numbershooter.equation;
 
 import org.unice.polytech.si3.devint.teffaha.numbershooter.core.UnvalidEquationException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -35,6 +37,27 @@ public class EquationFactory {
         }
     }
 
+    public List<Integer> getProposition(int solution,int number){
+        ArrayList<Integer> listProposition =  new ArrayList<Integer>();
+        boolean propPut = false;
+        for(int i=0;i<number;i++){
+            int start = solution-number;
+            start = (start >= 0)?start:0;
+            int end = solution +number;
+            end = (end <= 99)?end:99;
+            Integer rand = getRandomInt(start,end);
+            if(rand.equals(propPut)){
+                propPut = true;
+            }
+            listProposition.add(rand);
+        }
+        if(!propPut){
+            listProposition.set(getRandomInt(number),solution);
+        }
+
+        return listProposition;
+
+    }
     private Equation calculateEquation(Operator operator,int max){
         Equation equation = new Equation(operator);
         try {
@@ -91,9 +114,18 @@ public class EquationFactory {
 
     public static void main(String[] args){
         for(int i=0;i<100;i++){
-            System.out.println("Level : "+i+" Equation : "+EquationFactory.getInstance().getEquation(i));
+            Equation eq =  EquationFactory.getInstance().getEquation(i);
+            System.out.println("Level : "+i+" Equation : "+eq+" Propositions:"+listToSTring(getInstance().getProposition(eq.getRight(),4)));
         }
     }
 
+
+    public static String listToSTring(List<Integer> list){
+        String str ="";
+        for(int i=0;i<list.size();i++){
+            str+="["+list.get(i)+"]";
+        }
+        return str;
+    }
 }
                                   
