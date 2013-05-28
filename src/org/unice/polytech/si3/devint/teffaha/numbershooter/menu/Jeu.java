@@ -1,17 +1,14 @@
-package jeu;
+package org.unice.polytech.si3.devint.teffaha.numbershooter.menu;
 
-import gameEngine.Adapter;
-import gameEngine.Renderer2;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 
-import org.newdawn.slick.opengl.renderer.Renderer;
+import org.newdawn.slick.SlickException;
 
-import devintAPI.FenetreAbstraite;
-import devintAPI.Preferences;
+import org.unice.polytech.si3.devint.teffaha.numbershooter.devintAPI.FenetreAbstraite;
+import org.unice.polytech.si3.devint.teffaha.numbershooter.devintAPI.Preferences;
+import org.unice.polytech.si3.devint.teffaha.numbershooter.renderer.MainRenderer;
 
-import java.awt.*;
 import java.awt.event.*;
 
 /** Cette classe est un exemple d'interface de jeu.
@@ -121,7 +118,11 @@ public class Jeu extends FenetreAbstraite implements ActionListener{
      	*/
     	
     	//Adapter.getInstance().render();
-    	Renderer2.getInstance().startRender();
+        try {
+            MainRenderer.Start();
+        } catch (SlickException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
     }
 
     // lire la question si clic sur le bouton 

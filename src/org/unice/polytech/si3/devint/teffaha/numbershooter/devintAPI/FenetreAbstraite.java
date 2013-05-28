@@ -6,7 +6,7 @@ Cette classe abstraite est un Frame associ� � une instance de voix
  */
 
 
-package devintAPI;
+package org.unice.polytech.si3.devint.teffaha.numbershooter.devintAPI;
 
 import java.awt.event.*;
 

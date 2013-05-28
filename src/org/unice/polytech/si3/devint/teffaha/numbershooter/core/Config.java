@@ -25,7 +25,7 @@ import java.util.Map;
  * the name can be altered staticly in the code by modifing the static String  CONFIG_FILE
  */
 public class Config {
-    private static final String CONFIG_FILE="../../../ressources/config.xml";
+    private static final String CONFIG_FILE="../ressources/config.xml";
 	private static boolean initialized = false;
 	private static URI path;
 	private static String PluginsPath;

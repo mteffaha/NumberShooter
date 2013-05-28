@@ -109,9 +109,16 @@ public class RessourceManager {
             for(int i=1;i<=11;i++){
                 graphics.put("explosion"+i,new Image((String)Config.getParameterByName("ressourcesroot")+"images/explosion/exp"+i+".png"));
             }
+
             graphics.put("beam",new Image((String)Config.getParameterByName("ressourcesroot")+"images/ship/beam.png"));
             graphics.put("prebeam",new Image((String)Config.getParameterByName("ressourcesroot")+"images/ship/preBeam.png"));
             graphics.put("bgshooting",new Image((String)Config.getParameterByName("ressourcesroot")+"images/ship/shootingbehind.png"));
+            graphics.put("arrowu",new Image((String)Config.getParameterByName("ressourcesroot")+"images/arrowD.png"));
+            graphics.put("arrowd",new Image((String)Config.getParameterByName("ressourcesroot")+"images/arrowU.png"));
+
+            for(int i=1;i<=5;i++){
+                graphics.put("boss"+i,new Image((String)Config.getParameterByName("ressourcesroot")+"images/boss/boss"+i+".png"));
+            }
             for(int i=1;i<=4;i++){
                 graphics.put("ship"+i,new Image((String)Config.getParameterByName("ressourcesroot")+"images/ship/f"+i+".png"));
             }

@@ -1,10 +1,10 @@
 package org.unice.polytech.si3.devint.teffaha.numbershooter.renderer;
 
-import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
+import org.newdawn.slick.*;
+import org.newdawn.slick.fills.GradientFill;
+import org.newdawn.slick.geom.Circle;
 import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.RoundedRectangle;
 import org.unice.polytech.si3.devint.teffaha.numbershooter.core.Config;
 import org.unice.polytech.si3.devint.teffaha.numbershooter.equation.Equation;
 import org.unice.polytech.si3.devint.teffaha.numbershooter.equation.EquationFactory;
@@ -33,13 +33,16 @@ public class LevelState extends RenderState {
     private ship character;
     private boolean finished = false;
     private boolean won = false;
+    private static final int TOTALCOUNT=3500;
+    private int counter = TOTALCOUNT;
 
     public LevelState(){
 
         enemies =  new ArrayList<Enemy>();
         equation = EquationFactory.getInstance().getEquation(getLevel());
-        int width = (Short)Config.getParameterByName("windowwidth");
-        int height = (Short)Config.getParameterByName("windowheight");
+        int width = MainRenderer.screenWidth;
+        int height = MainRenderer.screenHeight;
+        System.out.println("WIDDDDDDDDDDDTH : "+width+" HEEEEEEEEEEEEIGT : "+height);
         character = new ship((width-150)/2 ,height-200);
         int nbProps = ((width/(WIDTH_ELEMENT+(2*MARGIN))));
 
@@ -61,7 +64,19 @@ public class LevelState extends RenderState {
 
     @Override
     protected void updateLogic() {
+        counter--;
         character.updateLogic();
+
+        int amount= (counter*100)/TOTALCOUNT;
+        int cscore = amount*20/100;
+
+        if(cscore == 0){
+            MainRenderer.score+=cscore;
+            finished = true;
+            won = false;
+        }
+
+
 
         int target = (Short)Config.getParameterByName("windowheight")-400;
         if(enemies.get(0).getyPosition() >= target){
@@ -116,18 +131,45 @@ public class LevelState extends RenderState {
 
         g.setFont(RessourceManager.getFont("information"));
         g.setColor(Color.red);
-        g.drawString("Score :"+MainRenderer.score,(float)(width*0.70),15);
+        g.drawString("Score :"+MainRenderer.score,(float)(width*0.60),15);
         g.setColor(Color.black);
         g.drawString("Equation :"+equation,40,15);
         dmnE.render(gc,g);
+        int amount= (counter*100)/TOTALCOUNT;
+        ShapeFill healthFill = new GradientFill(0, amount / 2, Color.red, amount, amount - 1, Color.orange, true);
+
+        RoundedRectangle rec =   new RoundedRectangle(200,height-100,(200*amount)/100,50,10);
+        RoundedRectangle border =   new RoundedRectangle(197,height-103,206,56,10);
+        Circle circle =  new Circle(125,height-125,70);
+        Circle innerCircle =  new Circle(125,height-125,60);
+
+
+
+        g.setColor(Color.white);
+        g.setLineWidth(6);
+        g.fill(circle);
+
+        g.draw(border);
+        g.fill(rec,healthFill);
+        g.fill(innerCircle,healthFill);
+
+        g.setFont(RessourceManager.getFont("enemy"));
+        int cscore = amount*20/100;
+        g.drawString(""+cscore,75,height-190);
+
+
     }
 
     @Override
     public RenderState updateState() {
+
         if(finished){
             if(won){
                 won = false;
                 finished = false;
+                int amount= (counter*100)/TOTALCOUNT;
+                int cscore = amount*20/100;
+                MainRenderer.score+=  cscore;
                 return new DoneState(this);
             }else{
                 won = false;

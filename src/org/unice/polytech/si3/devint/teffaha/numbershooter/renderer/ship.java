@@ -17,7 +17,16 @@ import org.unice.polytech.si3.devint.teffaha.numbershooter.renderer.input.InputM
  */
 public class ship extends RenderState{
 
+    public int getxPosition() {
+        return xPosition;
+    }
+
     private int xPosition=0;
+
+    public int getyPosition() {
+        return yPosition;
+    }
+
     private int yPosition=0;
     private Animation anim;
     private Image bgShooting;

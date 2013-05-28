@@ -11,6 +11,8 @@ import org.unice.polytech.si3.devint.teffaha.numbershooter.renderer.input.InputM
 public class MainRenderer extends BasicGame {
     private RenderState renderState;
     public static int score = 0;
+    public static int screenWidth;
+    public static int screenHeight;
 
     public MainRenderer()
     {
@@ -23,7 +25,7 @@ public class MainRenderer extends BasicGame {
     public void init(GameContainer gc)
             throws SlickException {
         RessourceManager.init();
-        renderState =  new LevelState();
+        renderState =  new Tutorial();
 
     }
 
@@ -64,7 +66,12 @@ public class MainRenderer extends BasicGame {
         AppGameContainer app =
                 new AppGameContainer(new MainRenderer());
 
-        app.setDisplayMode((Short)Config.getParameterByName("windowwidth"), (Short)Config.getParameterByName("windowheight"), (Boolean)Config.getParameterByName("isrendererfullscreen"));
+
+        MainRenderer.screenHeight = app.getScreenHeight();
+        MainRenderer.screenWidth = app.getScreenWidth();
+        System.out.println("Screen W:"+screenWidth+" H:"+screenHeight);
+
+        app.setDisplayMode(screenWidth, screenHeight, (Boolean)Config.getParameterByName("isrendererfullscreen"));
         app.start();
     }
 

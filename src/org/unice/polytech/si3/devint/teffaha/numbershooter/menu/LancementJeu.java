@@ -1,9 +1,6 @@
-package jeu;
+package org.unice.polytech.si3.devint.teffaha.numbershooter.menu;
 
-import ihm.FrameEndGame;
-import gameEngine.Adapter;
-import gameEngine.Renderer2;
-import gameEngine.Score;
+
 
 import org.newdawn.slick.SlickException;
 
@@ -17,7 +14,9 @@ public class LancementJeu{
 
     public static void main(String args[]) throws SlickException{
     	//Sound.TIR_LASER.play();
-        new jeu.MenuJeu("Number Shooter");
+
+
+        new MenuJeu("Number Shooter");
 
     	
     	
